@@ -14,21 +14,31 @@ function playRound(playerSelection, computerSelection){
     computerSelection = getComputerChoice();
     playerSelection = prompt("Enter your choice: ");
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-    if(playerSelection == "Rock" || playerSelection == "Paper" || playerSelection == "Scissors"){
-        if(computerSelection == playerSelection){
-        return "This is a draw";
-        }
-        else if(computerSelection == "Rock" && playerSelection == "Paper" || computerSelection == "Paper" && playerSelection == "Scissors" || computerSelection == "Scissors" && playerSelection == "Rock"){
-            return `You win! ${playerSelection} beats ${computerSelection}`;
-        }
-        else {
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
-        }
-    }   
-    else 
-        return `You have entered an invalid value. Please try again.`
+    if(computerSelection == playerSelection){
+        return "0";
+    }
+    else if(computerSelection == "Rock" && playerSelection == "Paper" || computerSelection == "Paper" && playerSelection == "Scissors" || computerSelection == "Scissors" && playerSelection == "Rock"){
+            return `1`;
+    }
+    else {
+            return `0`;
+    }
+        
+      
+    
 }
 
+function game(){
+    let points = 0;
+    for(i = 0; i<5; i++){
+        points = points + playRound();
+    }
+    if(points >=3 ){
+        document.write("You win!")
+    }
+    else{
+        document.write("You lose!")
+    }
+}
 
-document.write(playRound());
 
